@@ -1,1212 +1,479 @@
-<!DOCTYPE html>
-<html lang="en">
-<!--@HEAD-->
-
-<head>
-    <title>A Technical Documentation Page</title>
-    <link rel="stylesheet" href="css/style.css">
-    <meta charset="UTF-8">
-    <meta name="description" content="A Technical Documentation Page">
-    <meta name="author" content="ridafatima">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--#FONT_AWESOME-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <!--#FONTS-->
-</head>
-<!--@BODY-->
-
-<body>
-    <div id="container">
-        <a href="#self" id="hamburger-btn" onclick="open_menu()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
-        <span id="menu-select">
-            <p id="p-menu-select">Introduction</p>
-        </span>
-        <div id="blur"></div>
-        <div id="header-small">
-            <h1>CSS Grid Layout</h1>
-        </div>
-        <!--#DOCUMENTATION-->
-        <main id="main-doc">
-            <section id="introduction" class="main-section">
-                <header>
-                    <h2>Introduction</h2>
-                </header>
-                <p>
-                    CSS Grid Layout excels at dividing a page into major regions or defining the relationship in terms of size, position, and layer, between parts of a control built from HTML primitives.
-                </p>
-                <p>CSS Grid Layout introduces a two-dimensional grid system to CSS. Grids can be used to layout major page areas or small user interface elements. Grid layout enables an author to align elements into columns and rows.
-                </p>
-                <h3>Basic example</h3>
-                <p>The example below shows a three-column grid with three rows.</p>
-                <div id="grid-example-1">
-                    <div class="item-1">1</div>
-                    <div class="item-2">2</div>
-                    <div class="item-3">3</div>
-                    <div class="item-4">4</div>
-                    <div class="item-5">5</div>
-                </div>
-            </section>
-            <section id="basic_concepts" class="main-section">
-                <header>
-                    <h2>Basic Concepts</h2>
-                </header>
-                <p>CSS Grid Layout introduces a two-dimensional grid system to CSS. Grids can be used to layout major page areas or small user interface elements.</p>
-                <h3>What is a grid?</h3>
-                <p>A <code>grid</code> is an intersecting set of horizontal and vertical lines – one set defining columns and the other rows. Elements can be placed onto the grid, respecting these column and row lines.</p>
-                <p>CSS grid layout has the following features:</p>
-                <ul>
-                    <li>
-                        <h4>Fixed and flexible track sizes</h4>
-                        <p>You can create a grid with fixed track sizes – using pixels. You can also create a grid using flexible sizes with percentages or with the new fr unit designed for this purpose.</p>
-                    </li>
-                    <li>
-                        <h4>Item placement</h4>
-                        <p>You can place items into a precise location on the grid using line numbers, names or by targeting an area of the grid.</p>
-                    </li>
-                    <li>
-                        <h4>Creation of additional tracks to hold content</h4>
-                        <p>You can define an explicit grid with grid layout but the specification also deals with the content added outside of a declared grid, which adds additional rows and columns when needed.</p>
-                    </li>
-                    <li>
-                        <h4>Alignment control</h4>
-                        <p>You can define an explicit grid with grid layout but the specification also deals with the content added outside of a declared grid, which adds additional rows and columns when needed.</p>
-                    </li>
-                    <li>
-                        <h4>Control of overlapping content</h4>
-                        <p>More than one item can be placed into a grid cell or area, they can partially overlap each other. This layering may then be controlled with <code>z-index</code> property.</p>
-                    </li>
-                </ul>
-                <h3>The Grid container</h3>
-                <p>We create a grid container by declaring <code>display: grid</code> or <code>display: inline-grid</code> on an element. As soon as we do this all direct children of that element will become grid items.</p>
-                <h3>Grid Tracks</h3>
-                <p>We define rows and columns on our grid with the <code>grid-template-columns</code> and <code>grid-template-rows</code> properties. These define grid tracks. A grid track is the space between any two lines on the grid. </p>
-                <h4>The fr Unit</h4>
-                <p>Tracks can be defined using any length unit. Grid also introduces an additional length unit to help us create flexible grid tracks. The new fr unit represents a fraction of the available space in the grid container</p>
-                <h4>Track listings with <code>repeat()</code> notation</h4>
-                <p>Large grids with many tracks can use the <code>repeat()</code> notation, to repeat all or a section of the track listing. Repeat notation can be used for a part of the track listing. Repeat notation takes the track listing, and uses it to create a repeating pattern of tracks.</p>
-                <h4>The implicit and explicit grid</h4>
-                <p>When creating our example grid we specifically defined our column tracks with the <code>grid-template-columns</code> property, but the grid also created rows on its own. These rows are part of the implicit grid. Whereas the explicit grid consists of any rows and columns defined with <code>grid-template-columns</code> or <code>grid-template-rows</code>.</p>
-                <h4>Track sizing and <code>minmax()</code></h4>
-                <p>When setting up an explicit grid or defining the sizing for automatically created rows or columns we may want to give tracks a minimum size, but also ensure they expand to fit any content that is added. We can do that using <code>minmax()</code> function. It's used to limit the size of items when the grid container changes size</p>
-                <h3>Grid Lines</h3>
-                <p>It should be noted that when we define a grid we define the grid tracks, not the lines. Grid then gives us numbered lines to use when positioning items. When placing an item, we target the line – rather than the track.</p>
-                <h3>Grid Cells</h3>
-                <p>A grid cell is the smallest unit on a <code>grid</code>. Conceptually it is like a table cell. Once a grid is defined as a parent the child items will lay themselves out in one cell each of the defined grid.</p>
-                <h3>Grid Areas</h3>
-                <p>Items can span one or more cells both by row or by column, and this creates a grid area. Grid areas must be rectangular – it isn’t possible to create an L-shaped area.</p>
-                <h3>Gutters</h3>
-                <p>Gutters or alleys between grid cells can be created using the <code>column-gap</code> and <code>row-gap</code> properties, or the shorthand gap. Any space used by gaps will be accounted for before space is assigned to the flexible length fr tracks, and gaps act for sizing purposes like a regular grid track, however you cannot place anything into a gap.</p>
-                <h3>Nesting grids</h3>
-                <p>A grid item can become a grid container. In this case the nested grid has no relationship to the parent.</p>
-                <h4>Subgrid</h4>
-                <p>feature called subgrid, which would let us create nested grids that use the track definition of the parent grid.</p>
-                <h3>Layering items with z-index</h3>
-                <p>Grid items can occupy the same cell and hence can overlap. We can control the order in which items stack up by using the <code>z-index</code> property - just like positioned items.</p>
-            </section>
-            <section id="grid" class="main-section">
-                <header>
-                    <h2>grid</h2>
-                </header>
-                <p>The <code>grid</code> CSS property is a shorthand property that sets all of the explicit grid properties (<code>grid-template-rows</code>, <code>grid-template-columns</code>, and <code>grid-template-areas</code>), and all the implicit grid properties (<code>grid-auto-rows</code>, <code>grid-auto-columns</code>, and <code>grid-auto-flow</code>), in a single declaration.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* &lt;'grid-template'&gt; values */
-                                grid: none;
-                                grid: "a" 100px "b" 1fr;
-                                grid: [linename1] "a" 100px [linename2];
-                                grid: "a" 200px "b" min-content;
-                                grid: "a" minmax(100px, max-content) "b" 20%;
-                                grid: 100px / 200px;
-                                grid: minmax(400px, min-content) / repeat(auto-fill, 50px);
-
-                                /* &lt;'grid-template-rows'&gt; /
-                                     [ auto-flow &amp;&amp; dense? ] &lt;'grid-auto-columns'&gt;? values */
-                                grid: 200px / auto-flow;
-                                grid: 30% / auto-flow dense;
-                                grid: repeat(3, [line1 line2 line3] 200px) / auto-flow 300px;
-                                grid: [line1] minmax(20em, max-content) / auto-flow dense 40%;
-
-                                /* [ auto-flow &amp;&amp; dense? ] &lt;'grid-auto-rows'&gt;? /
-                                     &lt;'grid-template-columns'&gt; values */
-                                grid: auto-flow / 200px;
-                                grid: auto-flow dense / 30%;
-                                grid: auto-flow 300px / repeat(3, [line1 line2 line3] 200px);
-                                grid: auto-flow dense 40% / [line1] minmax(20em, max-content);
-
-                                /* Global values */
-                                grid: inherit;
-                                grid: initial;
-                                grid: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>&lt;'grid-template'&gt;</code></h4>
-                        <p>Defines the grid-template including grid-template-columns, grid-template-rows and grid-template-areas.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;'grid-template-rows'&gt; / [ auto-flow &amp;&amp; dense? ] &lt;'grid-auto-columns'&gt;?</code></h4>
-                        <p>Sets up an auto-flow by setting the row tracks explicitly via the grid-template-rows property (and the <code>grid-template-columns</code> property to none) and specifying how to auto-repeat the column tracks via <code>grid-auto-columns</code> (and setting <code>grid-auto-rows</code> to <code>auto</code>). <code>grid-auto-flow</code> is also set to <code>column</code> accordingly, with dense if it’s specified.
-                            All other grid sub-properties are reset to their initial values.</p>
-                    </li>
-                    <li>
-                        <h4><code>[ auto-flow &amp;&amp; dense? ] &lt;'grid-auto-rows'&gt;? / &lt;'grid-template-columns'&gt;</code></h4>
-                        <p>Sets up an auto-flow by setting the column tracks explicitly via the <code>grid-template-columns</code> property (and the <code>grid-template-rows</code> property to <code>none</code>) and specifying how to auto-repeat the row tracks via <code>grid-auto-rows</code> (and setting <code>grid-auto-columns</code> to <code>auto</code>). <code>grid-auto-flow</code> is also set to <code>row</code> accordingly, with dense if it’s specified.
-                            All other grid sub-properties are reset to their initial values.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="LBzbwV" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 1" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/LBzbwV/">Project#4~embed 1</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-area" class="main-section">
-                <header>
-                    <h2>grid-area</h2>
-                </header>
-                <p>The <code>grid-area</code> CSS property is a shorthand property for <code>grid-row-start</code>, <code>grid-column-start</code>, <code>grid-row-end</code> and <code>grid-column-end</code>, specifying a grid item’s size and location within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the edges of its grid area.</p>
-                <p>If four <code>&lt;grid-line&gt;</code> values are specified, <code>grid-row-start</code> is set to the first value, <code>grid-column-start</code> is set to the second value, <code>grid-row-end</code> is set to the third value, and <code>grid-column-end</code> is set to the fourth value.<br>
-                    When <code>grid-column-end</code> is omitted, if <code>grid-column-start</code> is a <code>&lt;custom-ident&gt;</code>, <code>grid-column-end</code> is set to that <code>&lt;custom-ident&gt;</code>; otherwise, it is set to <code>auto</code>.<br>When <code>grid-row-end</code> is omitted, if <code>grid-row-start</code> is a <code>&lt;custom-ident&gt;</code>, <code>grid-row-end</code> is set to that <code>&lt;custom-ident&gt;</code>; otherwise, it is set to <code>auto</code>.<br>
-                    When <code>grid-column-start</code> is omitted, if <code>grid-row-start</code> is a <code>&lt;custom-ident&gt;</code>, all four longhands are set to that value. Otherwise, it is set to <code>auto</code>.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword values */
-                                grid-area: auto;
-                                grid-area: auto / auto;
-                                grid-area: auto / auto / auto;
-                                grid-area: auto / auto / auto / auto;
-
-                                /* &lt;custom-ident&gt; values */
-                                grid-area: some-grid-area;
-                                grid-area: some-grid-area / another-grid-area;
-
-                                /* &lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;? values */
-                                grid-area: some-grid-area 4;
-                                grid-area: some-grid-area 4 / 2 another-grid-area;
-
-                                /* span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ] values */
-                                grid-area: span 3;
-                                grid-area: span 3 / span some-grid-area;
-                                grid-area: 2 span / another-grid-area span;
-
-                                /* Global values */
-                                grid-area: inherit;
-                                grid-area: initial;
-                                grid-area: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement or a default span of 1.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;custom-ident&gt;</code></h4>
-                        <p>If there is a named line with the name '<code>&lt;custom-ident&gt;-start</code>'/'<code>&lt;custom-ident&gt;-end</code>', it contributes the first such line to the grid item’s placement. Otherwise, this is treated as if the integer 1 had been specified along with the <code>&lt;custom-ident&gt;</code>.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;?</code></h4>
-                        <p>Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.
-                            If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.<br> An <code>&lt;integer&gt;</code> value of 0 is invalid</p>
-                    </li>
-                    <li>
-                        <h4><code>span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ]</code></h4>
-                        <p>Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines from the opposite edge.<br>
-                            If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.<br> If the <code>&lt;integer&gt;</code> is omitted, it defaults to 1. Negative integers or 0 are invalid.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="GByexN" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 2" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/GByexN/">Project#4~embed 2</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-auto-columns" class="main-section">
-                <header>
-                    <h2>grid-auto-columns</h2>
-                </header>
-                <p>The <code>grid-auto-columns</code> CSS property specifies the size of an implicitly-created grid column track.<br>If a grid item is positioned into a column that is not explicitly sized by <code>grid-template-columns</code>, implicit grid tracks are created to hold it. This can happen either by explicitly positioning into a column that is out of range, or by the auto-placement algorithm creating additional columns.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword values */
-                                grid-auto-columns: min-content;
-                                grid-auto-columns: max-content;
-                                grid-auto-columns: auto;
-
-                                /* &lt;length&gt; values */
-                                grid-auto-columns: 100px;
-                                grid-auto-columns: 20cm;
-                                grid-auto-columns: 50vmax;
-
-                                /* &lt;percentage&gt; values */
-                                grid-auto-columns: 10%;
-                                grid-auto-columns: 33.3%;
-
-                                /* &lt;flex&gt; values */
-                                grid-auto-columns: 0.5fr;
-                                grid-auto-columns: 3fr;
-
-                                /* minmax() values */
-                                grid-auto-columns: minmax(100px, auto);
-                                grid-auto-columns: minmax(max-content, 2fr);
-                                grid-auto-columns: minmax(20%, 80vmax);
-
-                                /* fit-content() values */
-                                grid-auto-columns: fit-content(400px);
-                                grid-auto-columns: fit-content(5cm);
-                                grid-auto-columns: fit-content(20%);
-
-                                /* multiple track-size values */
-                                grid-auto-columns: min-content max-content auto;
-                                grid-auto-columns: 100px 150px 390px;
-                                grid-auto-columns: 10% 33.3%;
-                                grid-auto-columns: 0.5fr 3fr 1fr;
-                                grid-auto-columns: minmax(100px, auto) minmax(max-content, 2fr) minmax(20%, 80vmax);
-                                grid-auto-columns: 100px minmax(100px, auto) 10% 0.5fr fit-content(400px);
-
-                                /* Global values */
-                                grid-auto-columns: inherit;
-                                grid-auto-columns: initial;
-                                grid-auto-columns: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>&lt;length&gt;</code></h4>
-                        <p>Is a non-negative length.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;percentage&gt;</code></h4>
-                        <p>Is a non-negative <code>&lt;percentage&gt;</code> value relative to the block size of the grid container. If the block size of the grid container is indefinite, the percentage value is treated like auto.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;flex&gt;</code></h4>
-                        <p>Is a non-negative dimension with the unit fr specifying the track’s flex factor. Each <code>&lt;flex&gt;</code>-sized track takes a share of the remaining space in proportion to its flex factor.
-                            When appearing outside a <code>minmax()</code> notation, it implies an automatic minimum (i.e. minmax(auto, &lt;flex&gt;)).</p>
-                    </li>
-                    <li>
-                        <h4><code>max-content</code></h4>
-                        <p>Is a keyword representing the largest minimal content contribution of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>min-content</code></h4>
-                        <p>Is a keyword representing the largest minimal content contribution of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>minmax(min, max)</code></h4>
-                        <p>Is a functional notation that defines a size range greater than or equal to min and less than or equal to max. If max is smaller than min, then max is ignored and the function is treated as min. As a maximum, a <code>&lt;flex&gt;</code> value sets the track’s flex factor. As a minimum, it is treated as zero (or minimal content, if the grid container is sized under a minimal content constraint)</p>
-                    </li>
-                    <li>
-                        <h4><code>fit-content(argument)</code></h4>
-                        <p>Represents the formula min(max-content, max(auto, argument)), which is calculated similar to auto (i.e. minmax(auto, max-content)), except that the track size is clamped at argument if it is greater than the auto minimum.</p>
-                    </li>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword that is identical to maximal content if it's a maximum. As a minimum it represents the largest minimum size (as specified by min-width/min-height) of the grid items occupying the grid track.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="YjYgmp" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 3" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/YjYgmp/">Project#4~embed 3</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-auto-flow" class="main-section">
-                <header>
-                    <h2>grid-auto-flow</h2>
-                </header>
-                <p>The <code>grid-auto-flow</code> CSS property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.</p>
-                <p>This property may take one of two forms:</p>
-                <ul>
-                    <li>a single keyword: one of row, column, or dense.</li>
-                    <li>two keywords: row dense or column dense.</li>
-                </ul>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword values */
-                                grid-auto-flow: row;
-                                grid-auto-flow: column;
-                                grid-auto-flow: dense;
-                                grid-auto-flow: row dense;
-                                grid-auto-flow: column dense;
-
-                                /* Global values */
-                                grid-auto-flow: inherit;
-                                grid-auto-flow: initial;
-                                grid-auto-flow: unset;
-                            </code>
-                        </pre>
-                <h3>Values:</h3>
-                <ul>
-                    <li>
-                        <h4><code>row</code></h4>
-                        <p>Is a keyword specifying that the auto-placement algorithm places items, by filling each row in turn, adding new rows as necessary. If neither row nor column is provided, row is assumed.</p>
-                    </li>
-                    <li>
-                        <h4><code>column</code></h4>
-                        <p>Is a keyword specifying that the auto-placement algorithm places items, by filling each column in turn, adding new columns as necessary.</p>
-                    </li>
-                    <li>
-                        <h4><code>dense</code></h4>
-                        <p>Is a keyword specifying that the auto-placement algorithm uses a “dense” packing algorithm, which attempts to fill in holes earlier in the grid, if smaller items come up later. This may cause items to appear out-of-order, when doing so would fill in holes left by larger items.<br>
-                            If it is omitted, a “sparse” algorithm is used, where the placement algorithm only ever moves “forward” in the grid when placing items, never backtracking to fill holes. This ensures that all of the auto-placed items appear “in order”, even if this leaves holes that could have been filled by later items.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="gjoyKK" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 4" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/gjoyKK/">Project#4~embed 4</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-auto-rows" class="main-section">
-                <header>
-                    <h2>grid-auto-rows</h2>
-                </header>
-                <p>The <code>grid-auto-rows</code> CSS property specifies the size of an implicitly-created grid row track. <br>If a grid item is positioned into a row that is not explicitly sized by grid-template-rows, implicit grid tracks are created to hold it. This can happen either by explicitly positioning into a row that is out of range, or by the auto-placement algorithm creating additional rows.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword values */
-                                grid-auto-rows: min-content;
-                                grid-auto-rows: max-content;
-                                grid-auto-rows: auto;
-
-                                /* &lt;length&gt; values */
-                                grid-auto-rows: 100px;
-                                grid-auto-rows: 20cm;
-                                grid-auto-rows: 50vmax;
-
-                                /* &lt;percentage&gt; values */
-                                grid-auto-rows: 10%;
-                                grid-auto-rows: 33.3%;
-
-                                /* &lt;flex&gt; values */
-                                grid-auto-rows: 0.5fr;
-                                grid-auto-rows: 3fr;
-
-                                /* minmax() values */
-                                grid-auto-rows: minmax(100px, auto);
-                                grid-auto-rows: minmax(max-content, 2fr);
-                                grid-auto-rows: minmax(20%, 80vmax);
-
-                                /* multiple track-size values */
-                                grid-auto-rows: min-content max-content auto;
-                                grid-auto-rows: 100px 150px 390px;
-                                grid-auto-rows: 10% 33.3%;
-                                grid-auto-rows: 0.5fr 3fr 1fr;
-                                grid-auto-rows: minmax(100px, auto) minmax(max-content, 2fr) minmax(20%, 80vmax);
-                                grid-auto-rows: 100px minmax(100px, auto) 10% 0.5fr fit-content(400px);
-
-                                /* Global values */
-                                grid-auto-rows: inherit;
-                                grid-auto-rows: initial;
-                                grid-auto-rows: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>&lt;length&gt;</code></h4>
-                        <p>Is a non-negative length.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;percentage&gt;</code></h4>
-                        <p>Is a non-negative <code>&lt;percentage&gt;</code> value relative to the block size of the grid container. If the block size of the grid container is indefinite, the percentage value is treated like auto.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;flex&gt;</code></h4>
-                        <p>Is a non-negative dimension with the unit fr specifying the track’s flex factor. Each &lt;flex&gt;-sized track takes a share of the remaining space in proportion to its flex factor.<br>
-                            When appearing outside a <code>minmax()</code> notation, it implies an automatic minimum (i.e. minmax(auto, <code>&lt;flex&gt;</code>)).</p>
-                    </li>
-                    <li>
-                        <h4><code>max-content</code></h4>
-                        <p>Is a keyword representing the largest maximal content contribution of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>min-content</code></h4>
-                        <p>Is a keyword representing the largest minimal content contribution of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>minmax(min, max)</code></h4>
-                        <p>Is a functional notation that defines a size range greater than or equal to min and less than or equal to max. If max is smaller than min, then max is ignored and the function is treated as min. As a maximum, a <code>&lt;flex&gt;</code> value sets the track’s flex factor. As a minimum, it is treated as zero (or minimal content, if the grid container is sized under a minimal content constraint).</p>
-                    </li>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword that is identical to maximal content if it's a maximum. As a minimum it represents the largest minimum size (as specified by min-width/min-height) of the grid items occupying the grid track.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="rrpbZx" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 5" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/rrpbZx/">Project#4~embed 5</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-column" class="main-section">
-                <header>
-                    <h2>grid-column</h2>
-                </header>
-                <p>The <code>grid-column</code> CSS property is a shorthand property for <code>grid-column-start</code> and <code>grid-column-end</code> specifying a grid item's size and location within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its grid area.</p>
-                <h3>Syntax</h3>
-                <p>This property is specified as one or two <code>&lt;grid-line&gt;</code> values.</p>
-                <p>If two <code>&lt;grid-line&gt;</code> values are given they are separated by "/". The <code>grid-column-start</code> longhand is set to the value before the slash, and the <code>grid-column-end</code> longhand is set to the value after the slash.</p>
-                <p>Each <code>&lt;grid-line&gt;</code> value can be specified as:</p>
-                <ul>
-                    <li>either the <code>auto</code> keyword</li>
-                    <li>or a <code>&lt;custom-ident&gt;</code> value</li>
-                    <li>or an <code>&lt;integer&gt;</code> value</li>
-                    <li>or both <code>&lt;custom-ident&gt;</code> and <code>&lt;integer&gt;</code>, separated by a space</li>
-                    <li>or the keyword span together with either a <code>&lt;custom-ident&gt;</code> or an <code>&lt;integer&gt;</code> or both.</li>
-                </ul>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;custom-ident&gt;</code></h4>
-                        <p>If there is a named line with the name '<code>&lt;custom-ident&gt;-start'/'&lt;custom-ident&gt;-end</code>', it contributes the first such line to the grid item’s placement. Otherwise, this is treated as if the integer 1 had been specified along with the <code>&lt;custom-ident&gt;</code>.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;?</code></h4>
-                        <p>Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.<br>
-                            If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.<br> An <code>&lt;integer&gt;</code> value of 0 is invalid.</p>
-                    </li>
-                    <li>
-                        <h4><code>span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ]</code></h4>
-                        <p>Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines from the opposite edge.<br> If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.<br> If the <code>&lt;integer&gt;</code> is omitted, it defaults to 1. Negative integers or 0 are invalid.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="VByNVy" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 6" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/VByNVy/">Project#4~embed 6</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-column-end" class="main-section">
-                <header>
-                    <h2>grid-column-end</h2>
-                </header>
-                <p>The <code>grid-column-end</code> CSS property specifies a grid item’s end position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the block-end edge of its grid area.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword value */
-                                grid-column-end: auto;
-
-                                /* &lt;custom-ident&gt; values */
-                                grid-column-end: somegridarea;
-
-                                /* &lt;integer>&gt; + &lt;custom-ident&gt; values */
-                                grid-column-end: 2;
-                                grid-column-end: somegridarea 4;
-
-                                /* span + &lt;integer>&gt; + &lt;custom-ident&gt; values */
-                                grid-column-end: span 3;
-                                grid-column-end: span somegridarea;
-                                grid-column-end: 5 somegridarea span;
-
-                                /* Global values */
-                                grid-column-end: inherit;
-                                grid-column-end: initial;
-                                grid-column-end: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;custom-ident&gt;</code></h4>
-                        <p>If there is a named line with the name '<code>&lt;custom-ident&gt;-end</code>', it contributes the first such line to the grid item’s placement. Otherwise, this is treated as if the integer 1 had been specified along with the <code>&lt;custom-ident&gt;</code>.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;?</code></h4>
-                        <p>Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.<br>If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.<br>An <code>&lt;integer&gt;</code> value of 0 is invalid.</p>
-                    </li>
-                    <li>
-                        <h4><code>span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ]</code></h4>
-                        <p>Contributes a grid span to the grid item’s placement such that the column end edge of the grid item’s grid area is n lines from the start edge.<br> If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.<br> If the <code>&lt;integer&gt;</code> is omitted, it defaults to 1. Negative integers or 0 are invalid.<br> The <code>&lt;custom-ident&gt;</code> cannot take the span value.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="PBEgVy" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 7" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/PBEgVy/">Project#4~embed 7</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-column-gap" class="main-section">
-                <header>
-                    <h2>grid-column-gap</h2>
-                </header>
-                <p>The <code>grid-column-gap</code> CSS property sets the size of the gap (gutter) between an element's columns.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword value */
-                                column-gap: normal; 
-
-                                /* &lt;length&gt; values */
-                                column-gap: 3px;
-                                column-gap: 2.5em;
-
-                                /* &lt;percentage&gt; value */
-                                column-gap: 3%;
-
-                                /* Global values */
-                                column-gap: inherit;
-                                column-gap: initial;
-                                column-gap: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>normal</code></h4>
-                        <p>The browser's default spacing is used between columns. For multi-column layout this is specified as 1em. For all other layout types it is 0.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;length&gt;</code></h4>
-                        <p>The size of the gap between columns, defined as a <code>&lt;length&gt;</code>. The <code>&lt;length&gt;</code> property's value must be non-negative.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;percentage&gt;</code></h4>
-                        <p>The size of the gap between columns, defined as a <code>&lt;percentage&gt;</code>. The <code>&lt;percentage&gt;</code> property's value must be non-negative.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="ajExxJ" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 8" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/ajExxJ/">Project#4~embed 8</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-column-start" class="main-section">
-                <header>
-                    <h2>grid-column-start</h2>
-                </header>
-                <p>The <code>grid-column-start</code> CSS property specifies a grid item’s start position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement. This start position defines the block-start edge of the grid area.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword value */
-                                grid-column-start: auto;
-
-                                /* &lt;custom-ident&gt; value */
-                                grid-column-start: somegridarea;
-
-                                /* &lt;integer&gt; + &lt;custom-ident&gt; values */
-                                grid-column-start: 2;
-                                grid-column-start: somegridarea 4;
-
-                                /* span + &lt;integer&gt; + &lt;custom-ident&gt; values */
-                                grid-column-start: span 3;
-                                grid-column-start: span somegridarea;
-                                grid-column-start: 5 somegridarea span;
-
-                                /* Global values */
-                                grid-column-start: inherit;
-                                grid-column-start: initial;
-                                grid-column-start: unset;					
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>A keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;custom-ident&gt;</code></h4>
-                        <p>If there is a named line with the name '<code>&lt;custom-ident&gt;-start</code>', it contributes the first such line to the grid item’s placement. Otherwise, this is treated as if the integer 1 had been specified along with the <code>&lt;custom-ident&gt;</code>.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;?</code></h4>
-                        <p>Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.<br> If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.<br> An <code>&lt;integer&gt;</code> value of 0 is invalid.</p>
-                    </li>
-                    <li>
-                        <h4><code>span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ]</code></h4>
-                        <p>Contributes a grid span to the grid item’s placement, such that the column start edge of the grid item’s grid area is n lines from the end edge.<br> If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.<br>If the <code>&lt;integer&gt;</code> is omitted, it defaults to 1. Negative integers or 0 are invalid.<br>The <code>&lt;custom-ident&gt;</code> cannot take the span value.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="PBEgVy" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 7" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/PBEgVy/">Project#4~embed 7</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-gap" class="main-section">
-                <header>
-                    <h2>grid-gap</h2>
-                </header>
-                <p>The <code>grid-gap</code> CSS property specifies the gaps (gutters) between rows and columns. It is a shorthand for row-gap and column-gap.</p>
-                <p>This property is specified as a value for <code>&lt;'row-gap'&gt;</code> followed optionally by a value for <code>&lt;'column-gap'&gt;</code>. If <code>&lt;'column-gap'&gt;</code> is omitted, it’s set to the same value as <code>&lt;'row-gap'&gt;</code>.<br> <code>&lt;'row-gap'&gt;</code> and <code>&lt;'column-gap'&gt;</code> are each specified as a <code>&lt;length&gt;</code> or a <code>&lt;percentage&gt;</code>.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* One &lt;length&gt; value */
-                                gap: 20px;
-                                gap: 1em;
-                                gap: 3vmin;
-                                gap: 0.5cm;
-
-                                /* One &lt;percentage&gt; value */
-                                gap: 16%;
-                                gap: 100%;
-
-                                /* Two &lt;length&gt; values */
-                                gap: 20px 10px;
-                                gap: 1em 0.5em;
-                                gap: 3vmin 2vmax;
-                                gap: 0.5cm 2mm;
-
-                                /* One or two &lt;percentage&gt; values */
-                                gap: 16% 100%;
-                                gap: 21px 82%;
-
-                                /* calc() values */
-                                gap: calc(10% + 20px);
-                                gap: calc(20px + 10%) calc(10% - 5px);
-
-                                /* Global values */
-                                gap: inherit;
-                                gap: initial;
-                                gap: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>&lt;length&gt;</code></h4>
-                        <p>Is the width of the gutter separating the grid lines.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;percentage&gt;</code></h4>
-                        <p>Is the width of the gutter separating the grid lines, relative to the dimension of the element.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="ejyaRW" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 9" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/ejyaRW/">Project#4~embed 9</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-row" class="main-section">
-                <header>
-                    <h2>grid-row</h2>
-                </header>
-                <p>The <code>grid-row</code> CSS property is a shorthand property for <code>grid-row-start</code> and <code>grid-row-end</code> specifying a grid item’s size and location within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its grid area.</p>
-                <p>If two <code>&lt;grid-line&gt;</code> values are specified, the <code>grid-row-start</code> longhand is set to the value before the slash, and the <code>grid-row-end</code> longhand is set to the value after the slash.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword values */
-                                grid-row: auto;
-                                grid-row: auto / auto;
-
-                                /* &lt;custom-ident&gt; values */
-                                grid-row: somegridarea;
-                                grid-row: somegridarea / someothergridarea;
-
-                                /* &lt;integer&gt; + &lt;custom-ident&gt; values */
-                                grid-row: somegridarea 4;
-                                grid-row: 4 somegridarea / 6;
-
-                                /* span + &lt;integer&gt; + &lt;custom-ident&gt; values */
-                                grid-row: span 3;
-                                grid-row: span somegridarea;
-                                grid-row: 5 somegridarea span;
-                                grid-row: span 3 / 6;
-                                grid-row: span somegridarea / span someothergridarea;
-                                grid-row: 5 somegridarea span / 2 span;
-
-                                /* Global values */
-                                grid-row: inherit;
-                                grid-row: initial;
-                                grid-row: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;custom-ident&gt;</code></h4>
-                        <p>If there is a named line with the name '<code>&lt;custom-ident&gt;-start'/'&lt;custom-ident&gt;-end</code>', it contributes the first such line to the grid item’s placement. Otherwise, this is treated as if the integer 1 had been specified along with the <code>&lt;custom-ident&gt;</code>.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;?</code></h4>
-                        <p>Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.<br> If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.<br>An <code>&lt;integer&gt;</code> value of 0 is invalid.</p>
-                    </li>
-                    <li>
-                        <h4><code>span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ]</code></h4>
-                        <p>Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines from the opposite edge.<br> If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.<br> If the <code>&lt;integer&gt;</code> is omitted, it defaults to 1. Negative integers or 0 are invalid.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="OwzYgK" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 10" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/OwzYgK/">Project#4~embed 10</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-row-end" class="main-section">
-                <header>
-                    <h2>grid-row-end</h2>
-                </header>
-                <p>The <code>grid-row-end</code> CSS property specifies a grid item’s end position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-end edge of its grid area.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword value */
-                                grid-row-end: auto;
-
-                                /* &lt;custom-ident&gt; values */
-                                grid-row-end: somegridarea;
-
-                                /* &lt;integer&gt; + &lt;custom-ident&gt; values */
-                                grid-row-end: 2;
-                                grid-row-end: somegridarea 4;
-
-                                /* span + &lt;integer&gt; + &lt;custom-ident&gt; values */
-                                grid-row-end: span 3;
-                                grid-row-end: span somegridarea;
-                                grid-row-end: 5 somegridarea span;
-
-                                /* Global values */
-                                grid-row-end: inherit;
-                                grid-row-end: initial;
-                                grid-row-end: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;custom-ident&gt;</code></h4>
-                        <p>If there is a named line with the name '<code>&lt;custom-ident&gt;-end</code>', it contributes the first such line to the grid item’s placement.<br>Otherwise, this is treated as if the integer 1 had been specified along with the <code>&lt;custom-ident&gt;</code>.<br>The <code>&lt;custom-ident&gt;</code> cannot take the span value.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;?</code></h4>
-                        <p>Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.<br> If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.<br>An <code>&lt;integer&gt;</code> value of 0 is invalid.</p>
-                    </li>
-                    <li>
-                        <h4><code>span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ]</code></h4>
-                        <p>Contributes a grid span to the grid item’s placement such that the row end edge of the grid item’s grid area is n lines from the start edge. <br>If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.<br> If the <code>&lt;integer&gt;</code> is omitted, it defaults to 1. Negative integers or 0 are invalid.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="XBVwVe" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 11" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/XBVwVe/">Project#4~embed 11</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-row-gap" class="main-section">
-                <header>
-                    <h2>grid-row-gap</h2>
-                </header>
-                <p>The <code>grid-row-gap</code> CSS property sets the size of the gap (gutter) between an element's rows.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* &lt;length&gt; values */
-                                row-gap: 20px;
-                                row-gap: 1em;
-                                row-gap: 3vmin;
-                                row-gap: 0.5cm;
-
-                                /* &lt;percentage&gt; value */
-                                row-gap: 10%;
-
-                                /* Global values */
-                                row-gap: inherit;
-                                row-gap: initial;
-                                row-gap: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>&lt;length-percentage&gt;</code></h4>
-                        <p>Is the width of the gutter separating the rows. <code>&lt;percentage&gt;</code> values are relative to the dimension of the element.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="ajExxJ" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 8" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/ajExxJ/">Project#4~embed 8</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-row-start" class="main-section">
-                <header>
-                    <h2>grid-row-start</h2>
-                </header>
-                <p>The <code>grid-row-start</code> CSS property specifies a grid item’s start position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start edge of its grid area.</p>
-                <p>This property is specified as a single <code>&lt;grid-line&gt;</code> value. A <code>&lt;grid-line&gt;</code> value can be specified as:</p>
-                <ul>
-                    <li>either the <code>auto</code> keyword</li>
-                    <li>or a <code>&lt;custom-ident&gt;</code> value</li>
-                    <li>or an <code>&lt;integer&gt;</code> value</li>
-                    <li>or both <code>&lt;custom-ident&gt;</code> and <code>&lt;integer&gt;</code>, separated by a space</li>
-                    <li>or the keyword span together with either a <code>&lt;custom-ident&gt;</code> or an <code>&lt;integer&gt;</code> or both.</li>
-                </ul>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword value */
-                                grid-row-start: auto;
-
-                                /* &lt;custom-ident&gt; values */
-                                grid-row-start: somegridarea;
-
-                                /* &lt;integer&gt; + &lt;custom-ident&gt; values */
-                                grid-row-start: 2;
-                                grid-row-start: somegridarea 4;
-
-                                /* span + &lt;integer&gt; + &lt;custom-ident&gt; values */
-                                grid-row-start: span 3;
-                                grid-row-start: span somegridarea;
-                                grid-row-start: 5 somegridarea span;
-
-                                /* Global values */
-                                grid-row-start: inherit;
-                                grid-row-start: initial;
-                                grid-row-start: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;custom-ident&gt;</code></h4>
-                        <p>If there is a named line with the name '<code>&lt;custom-ident&gt;-end</code>', it contributes the first such line to the grid item’s placement.<br>Otherwise, this is treated as if the integer 1 had been specified along with the <code>&lt;custom-ident&gt;</code>.<br>The <code>&lt;custom-ident&gt;</code> cannot take the span value.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;?</code></h4>
-                        <p>Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.<br> If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.<br>An <code>&lt;integer&gt;</code> value of 0 is invalid.</p>
-                    </li>
-                    <li>
-                        <h4><code>span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ]</code></h4>
-                        <p>Contributes a grid span to the grid item’s placement such that the row end edge of the grid item’s grid area is n lines from the start edge. <br>If a name is given as a <code>&lt;custom-ident&gt;</code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.<br> If the <code>&lt;integer&gt;</code> is omitted, it defaults to 1. Negative integers or 0 are invalid.<br>The <code>&lt;custom-ident&gt;</code> cannot take the span value.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="XBVwVe" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 11" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/XBVwVe/">Project#4~embed 11</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-template" class="main-section">
-                <header>
-                    <h2>grid-template</h2>
-                </header>
-                <p>The <code>grid-template</code> CSS property is a shorthand property for defining grid columns, rows, and areas</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword value */
-                                grid-template: none;
-
-                                /* grid-template-rows / grid-template-columns values */
-                                grid-template: 100px 1fr / 50px 1fr;
-                                grid-template: auto 1fr / auto 1fr auto;
-                                grid-template: [linename] 100px / [columnname1] 30% [columnname2] 70%;
-                                grid-template: fit-content(100px) / fit-content(40%);
-
-                                /* grid-template-areas grid-template-rows / grid-template-column values */
-                                grid-template: "a a a"
-                                                             "b b b";
-                                grid-template: "a a a" 20%
-                                                             "b b b" auto;
-                                grid-template: [header-top] "a a a"     [header-bottom]
-                                                                 [main-top] "b b b" 1fr [main-bottom]
-                                                                                        / auto 1fr auto;
-
-                                /* Global values */
-                                grid-template: inherit;
-                                grid-template: initial;
-                                grid-template: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>none</code></h4>
-                        <p>Is a keyword that sets all three longhand properties to none, meaning there is no explicit grid. There are no named grid areas. Rows and columns will be implicitly generated; their size will be determined by the <code>grid-auto-rows</code> and <code>grid-auto-columns</code> properties.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;'grid-template-rows'&gt; / &lt;'grid-template-columns'&gt;</code></h4>
-                        <p>Sets <code>grid-template-rows</code> and <code>grid-template-columns</code> to the specified values, and <code>sets grid-template-areas</code> to <code>none</code>.</p>
-                    </li>
-                    <li>
-                        <h4><code>[ &lt;line-names&gt;? &lt;string&gt; &lt;track-size&gt;? &lt;line-names&gt; ]+ [ / &lt;explicit-track-list&gt; ]?</code></h4>
-                        <p>Sets <code>grid-template-areas</code> to the strings listed, <code>grid-template-rows</code> to the track sizes following each string (filling in auto for any missing sizes), and splicing in the named lines defined before/after each size, and <code>grid-template-columns</code> to the track listing specified after the slash (or none, if not specified).</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="qypGxK" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 12" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/qypGxK/">Project#4~embed 12</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-template-areas" class="main-section">
-                <header>
-                    <h2>grid-template-areas</h2>
-                </header>
-                <p>The <code>grid-template-areas</code> CSS property specifies named grid areas. <br>Those areas are not associated with any particular grid item, but can be referenced from the grid-placement properties <code>grid-row-start</code>, <code>grid-row-end</code>, <code>grid-column-start</code>, <code>grid-column-end</code>, and their shorthands <code>grid-row</code>, <code>grid-column</code>, and <code>grid-area</code>.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword value */
-                                grid-template-areas: none;
-
-                                /* &lt;string&gt; values */
-                                grid-template-areas: "a b";
-                                grid-template-areas: "a b b"
-                                                                         "a c d";
-
-                                /* Global values */
-                                grid-template-areas: inherit;
-                                grid-template-areas: initial;
-                                grid-template-areas: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>none</code></h4>
-                        <p>The grid container doesn’t define any named grid areas.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;string&gt;</code></h4>
-                        <p>A row is created for every separate string listed, and a column is created for each cell in the string. Multiple named cell tokens within and between rows create a single named grid area that spans the corresponding grid cells. Unless those cells form a rectangle, the declaration is invalid.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="OwzYEJ" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 13" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/OwzYEJ/">Project#4~embed 13</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-template-columns" class="main-section">
-                <header>
-                    <h2>grid-template-columns</h2>
-                </header>
-                <p>The <code>grid-template-columns</code> CSS property defines the line names and track sizing functions of the grid columns.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                                /* Keyword value */
-                                grid-template-columns: none;
-
-                                /* &lt;track-list&gt; values */
-                                grid-template-columns: 100px 1fr;
-                                grid-template-columns: [linename] 100px;
-                                grid-template-columns: [linename1] 100px [linename2 linename3];
-                                grid-template-columns: minmax(100px, 1fr);
-                                grid-template-columns: fit-content(40%);
-                                grid-template-columns: repeat(3, 200px);
-
-                                /* &lt;auto-track-list&gt; values */
-                                grid-template-columns: 200px repeat(auto-fill, 100px) 300px;
-                                grid-template-columns: minmax(100px, max-content)
-                                                                             repeat(auto-fill, 200px) 20%;
-                                grid-template-columns: [linename1] 100px [linename2]
-                                                                             repeat(auto-fit, [linename3 linename4] 300px)
-                                                                             100px;
-                                grid-template-columns: [linename1 linename2] 100px
-                                                                             repeat(auto-fit, [linename1] 300px) [linename3];
-
-                                /* Global values */
-                                grid-template-columns: inherit;
-                                grid-template-columns: initial;
-                                grid-template-columns: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>none</code></h4>
-                        <p>Is a keyword meaning that there is no explicit grid. Any columns will be implicitly generated and their size will be determined by the <code>grid-auto-columns</code> property</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;length&gt;</code></h4>
-                        <p>Is a non-negative length.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;percentage&gt;</code></h4>
-                        <p>Is a non-negative <code>&lt;percentage&gt;</code> value relative to the inline size of the grid container. If the size of the grid container depends on the size of its tracks, then the percentage must be treated as auto. <br>The intrinsic size contributions of the track may be adjusted to the size of the grid container and increase the final size of the track by the minimum amount that would result in honoring the percentage.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;flex&gt;</code></h4>
-                        <p>Is a non-negative dimension with the unit fr specifying the track’s flex factor. Each <code>&lt;flex&gt;</code>-sized track takes a share of the remaining space in proportion to its flex factor.
-                            When appearing outside a <code>minmax()</code> notation, it implies an automatic minimum (i.e. <code>minmax(auto, &lt;flex&gt;)</code>).</p>
-                    </li>
-                    <li>
-                        <h4><code>max-content</code></h4>
-                        <p>Is a keyword representing the largest maximal content contribution of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>min-content</code></h4>
-                        <p>Is a keyword representing the largest minimal content contribution of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>minmax(min, max)</code></h4>
-                        <p>Is a functional notation that defines a size range greater than or equal to min and less than or equal to max. If max is smaller than min, then max is ignored and the function is treated as min. As a maximum, a <code>&lt;flex&gt;</code> value sets the track’s flex factor. It is invalid as a minimum.</p>
-                    </li>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword that is identical to maximal content if it's a maximum. As a minimum it represents the largest minimum size (as specified by min-width/min-height) of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>fit-content( [ &lt;length&gt; | &lt;percentage&gt; ] )</code></h4>
-                        <p>Represents the formula <code>min(max-content, max(auto, argument))</code>, which is calculated similar to <code>auto</code> (i.e. <code>minmax(auto, max-content)</code>), except that the track size is clamped at argument if it is greater than the auto minimum.</p>
-                    </li>
-                    <li>
-                        <h4><code>repeat( [ &lt;positive-integer&gt; | auto-fill | auto-fit ] , &lt;track-list&gt; )</code></h4>
-                        <p>Represents a repeated fragment of the track list, allowing a large number of columns that exhibit a recurring pattern to be written in a more compact form.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="EpozdE" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 14" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/EpozdE/">Project#4~embed 14</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-            <section id="grid-template-rows" class="main-section">
-                <header>
-                    <h2>grid-template-rows</h2>
-                </header>
-                <p>The <code>grid-template-rows</code> CSS property defines the line names and track sizing functions of the grid rows.</p>
-                <h3>Syntax</h3>
-                <pre>
-                            <code>
-                            /* Keyword value */
-                            grid-template-rows: none;
-
-                            /* &lt;track-list&gt; values */
-                            grid-template-rows: 100px 1fr;
-                            grid-template-rows: [linename] 100px;
-                            grid-template-rows: [linename1] 100px [linename2 linename3];
-                            grid-template-rows: minmax(100px, 1fr);
-                            grid-template-rows: fit-content(40%);
-                            grid-template-rows: repeat(3, 200px);
-
-                            /* &lt;auto-track-list&gt; values */
-                            grid-template-rows: 200px repeat(auto-fill, 100px) 300px;
-                            grid-template-rows: minmax(100px, max-content)
-                                                                         repeat(auto-fill, 200px) 20%;
-                            grid-template-rows: [linename1] 100px [linename2]
-                                                                         repeat(auto-fit, [linename3 linename4] 300px)
-                                                                         100px;
-                            grid-template-rows: [linename1 linename2] 100px
-                                                                         repeat(auto-fit, [linename1] 300px) [linename3];
-
-                            /* Global values */
-                            grid-template-rows: inherit;
-                            grid-template-rows: initial;
-                            grid-template-rows: unset;
-                            </code>
-                        </pre>
-                <h3>Values</h3>
-                <ul>
-                    <li>
-                        <h4><code>none</code></h4>
-                        <p>Is a keyword meaning that there is no explicit grid. Any columns will be implicitly generated and their size will be determined by the grid-auto-columns property</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;length&gt;</code></h4>
-                        <p>Is a non-negative length.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;percentage&gt;</code></h4>
-                        <p>Is a non-negative <code>&lt;percentage&gt;</code> value relative to the inline size of the grid container. If the size of the grid container depends on the size of its tracks, then the percentage must be treated as auto. <br>The intrinsic size contributions of the track may be adjusted to the size of the grid container and increase the final size of the track by the minimum amount that would result in honoring the percentage.</p>
-                    </li>
-                    <li>
-                        <h4><code>&lt;flex&gt;</code></h4>
-                        <p>Is a non-negative dimension with the unit fr specifying the track’s flex factor. Each <code>&lt;flex&gt;</code>-sized track takes a share of the remaining space in proportion to its flex factor.
-                            When appearing outside a <code>minmax() notation</code>, it implies an automatic minimum (i.e. <code>minmax(auto, &lt;flex&gt;)</code>).</p>
-                    </li>
-                    <li>
-                        <h4><code>max-content</code></h4>
-                        <p>Is a keyword representing the largest maximal content contribution of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>min-content</code></h4>
-                        <p>Is a keyword representing the largest minimal content contribution of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>minmax(min, max)</code></h4>
-                        <p>Is a functional notation that defines a size range greater than or equal to min and less than or equal to max. If max is smaller than min, then max is ignored and the function is treated as min. As a maximum, a <code>&lt;flex&gt;</code> value sets the track’s flex factor. It is invalid as a minimum.</p>
-                    </li>
-                    <li>
-                        <h4><code>auto</code></h4>
-                        <p>Is a keyword that is identical to maximal content if it's a maximum. As a minimum it represents the largest minimum size (as specified by min-width/min-height) of the grid items occupying the grid track.</p>
-                    </li>
-                    <li>
-                        <h4><code>fit-content( [ &lt;length&gt; | &lt;percentage&gt; ] )</code></h4>
-                        <p>Represents the formula <code>min(max-content, max(auto, argument))</code>, which is calculated similar to <code>auto</code> (i.e. <code>minmax(auto, max-content)</code>), except that the track size is clamped at argument if it is greater than the auto minimum.</p>
-                    </li>
-                    <li>
-                        <h4><code>repeat( [ &lt;positive-integer&gt; | auto-fill | auto-fit ] , &lt;track-list&gt; )</code></h4>
-                        <p>Represents a repeated fragment of the track list, allowing a large number of columns that exhibit a recurring pattern to be written in a more compact form.</p>
-                    </li>
-                </ul>
-                <h3>Example</h3>
-                <div class="embed">
-                    <p data-height="480" data-theme-id="34129" data-slug-hash="EpozdE" data-default-tab="css,result" data-user="ridafatima15h1" data-pen-title="Project#4~embed 14" class="codepen">See the Pen <a href="https://codepen.io/ridafatima15h1/pen/EpozdE/">Project#4~embed 14</a> by ridafatima15h1 (<a href="https://codepen.io/ridafatima15h1">@ridafatima15h1</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-                </div>
-            </section>
-        </main>
-        <!--#NAVBAR-->
-        <nav id="navbar">
-            <header id="nav-header">
-                <h1 id="header">CSS Grid Layout</h1>
-            </header>
-            <div id="navbar-links">
-                <a href="#introduction" class="nav-link" id="link-1" onclick="open_Section(this.id)">Introduction</a>
-                <a href="#basic_concepts" class="nav-link" id="link-2" onclick="open_Section(this.id)">Basic Concepts</a>
-                <a href="#grid" class="nav-link" id="link-3" onclick="open_Section(this.id)">grid</a>
-                <a href="#grid-area" class="nav-link" id="link-4" onclick="open_Section(this.id)">grid-area</a>
-                <a href="#grid-auto-columns" class="nav-link" id="link-5" onclick="open_Section(this.id)">grid-auto-columns</a>
-                <a href="#grid-auto-flow" class="nav-link" id="link-6" onclick="open_Section(this.id)">grid-auto-flow</a>
-                <a href="#grid-auto-rows" class="nav-link" id="link-7" onclick="open_Section(this.id)">grid-auto-rows</a>
-                <a href="#grid-column" class="nav-link" id="link-8" onclick="open_Section(this.id)">grid-column</a>
-                <a href="#grid-column-end" class="nav-link" id="link-9" onclick="open_Section(this.id)">grid-column-end</a>
-                <a href="#grid-column-gap" class="nav-link" id="link-10" onclick="open_Section(this.id)">grid-column-gap</a>
-                <a href="#grid-column-start" class="nav-link" id="link-11" onclick="open_Section(this.id)">grid-column-start</a>
-                <a href="#grid-gap" class="nav-link" id="link-12" onclick="open_Section(this.id)">grid-gap</a>
-                <a href="#grid-row" class="nav-link" id="link-13" onclick="open_Section(this.id)">grid-row</a>
-                <a href="#grid-row-end" class="nav-link" id="link-14" onclick="open_Section(this.id)">grid-row-end</a>
-                <a href="#grid-row-gap" class="nav-link" id="link-15" onclick="open_Section(this.id)">grid-row-gap</a>
-                <a href="#grid-row-start" class="nav-link" id="link-16" onclick="open_Section(this.id)">grid-row-start</a>
-                <a href="#grid-template" class="nav-link" id="link-17" onclick="open_Section(this.id)">grid-template</a>
-                <a href="#grid-template-areas" class="nav-link" id="link-18" onclick="open_Section(this.id)">grid-template-areas</a>
-                <a href="#grid-template-columns" class="nav-link" id="link-19" onclick="open_Section(this.id)">grid-template-columns</a>
-                <a href="#grid-template-rows" class="nav-link" id="link-20" onclick="open_Section(this.id)">grid-template-rows</a>
-            </div>
-            <a id="cross-link" onclick="cross()"><i id="cross" class="fas fa-times fa-2x"></i></a>
-        </nav>
-
-    </div>
-    <script src="js/index.js"></script>
-</body>
-
-</html>
+/*------------------------------------------*/
+/*//////#ADJUSTING_DESIGNING_ELEMENTS///////*/
+/*------------------------------------------*/
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: whitesmoke;
+}
+
+#container {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    grid-template-rows: 200px 1fr;
+    grid-column-gap: 4px;
+}
+
+#navbar {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    grid-template-columns: 230px;
+    position: fixed;
+    z-index: 1;
+    height: 100vh;
+    width: 230px;
+    border-right: solid;
+    grid-row-gap: 1px;
+}
+
+#main-doc {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-bottom: 3em;
+    border-left: 8px solid;
+    border-left-color: cadetblue;
+    border-top: 8px solid;
+    border-top-style: double;
+    border-top-color: cadetblue;
+}
+
+#navbar-links {
+    display: grid;
+    grid-template-rows: repeat(20, 50px);
+    grid-template-columns: 230px;
+    grid-row: 2 / 23;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-top: 5px solid;
+    border-bottom: 5px solid;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    padding-left: 4px;
+    font-size: 1.2em;
+    line-height: 1.6;
+    word-spacing: 6px;
+    letter-spacing: 0.8px;
+}
+
+#nav-header {
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid;
+    border-color: whitesmoke;
+    border-style: double;
+    background-color: cadetblue;
+    color: whitesmoke;
+}
+
+#link-1 {
+    grid-row: 1 / 2;
+}
+
+#link-2 {
+    grid-row: 2 / 3;
+}
+
+#link-3 {
+    grid-row: 3 / 4;
+}
+
+#link-4 {
+    grid-row: 4 / 5;
+}
+
+#link-5 {
+    grid-row: 5 / 6;
+}
+
+#link-6 {
+    grid-row: 6 / 7;
+}
+
+#link-7 {
+    grid-row: 7 / 8;
+}
+
+#link-8 {
+    grid-row: 8 / 9;
+}
+
+#link-9 {
+    grid-row: 9 / 10;
+}
+
+#link-10 {
+    grid-row: 10 / 11;
+}
+
+#link-11 {
+    grid-row: 11 / 12;
+}
+
+#link-12 {
+    grid-row: 12 / 13;
+}
+
+#link-13 {
+    grid-row: 13 / 14;
+}
+
+#link-14 {
+    grid-row: 14 / 15;
+}
+
+#link-15 {
+    grid-row: 15 / 16;
+}
+
+#link-16 {
+    grid-row: 16 / 17;
+}
+
+#link-17 {
+    grid-row: 17 / 18;
+}
+
+#link-18 {
+    grid-row: 18 / 19;
+}
+
+#link-19 {
+    grid-row: 19 / 20;
+}
+
+#link-20 {
+    grid-row: 20 / 21;
+}
+
+#link-1,
+#link-2,
+#link-3,
+#link-4,
+#link-5,
+#link-6,
+#link-7,
+#link-8,
+#link-9,
+#link-10,
+#link-11,
+#link-12,
+#link-13,
+#link-14,
+#link-15,
+#link-16,
+#link-17,
+#link-18,
+#link-19,
+#link-20 {
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+h2 {
+    font-size: 3em;
+    color: cadetblue;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+p,
+ul {
+    font-size: 18px;
+    line-height: 1.6;
+    word-spacing: 6px;
+    letter-spacing: 0.8px;
+}
+
+.embed {
+    max-width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 8px solid;
+    border-color: cadetblue;
+    padding: 1px;
+}
+
+section {
+    display: none;
+}
+
+#introduction {
+    display: block;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    background-color: cadetblue;
+    font-weight: bold;
+}
+
+.nav-select {
+    text-decoration: underline;
+    font-weight: bold;
+    background-color: cadetblue;
+}
+
+pre {
+    white-space: pre-line;
+    border: 0.5px solid;
+    background-color: lightgrey;
+    border-color: whitesmoke;
+    padding: 8px;
+    margin: 2em;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    word-spacing: 5px;
+}
+
+code {
+    border: 0.5px solid;
+    border-color: whitesmoke;
+    background-color: lightgrey;
+    padding-left: 1px;
+    padding-right: 1px;
+    font-size: 16px;
+}
+
+pre > code {
+    border: none;
+}
+
+section {
+    padding-top: 1vh;
+}
+
+#header-small,
+#hamburger-btn,
+#blur,
+#hamburger-menue,
+#cross,
+#cross-link,
+#menu-select {
+    display: none;
+}
+
+/*********#EXAMPLES*********/
+
+#grid-example-1 {
+    background: LightGray;
+    border: 5px solid;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    font-size: 4em;
+    line-height: 2em;
+    text-align: center;
+    vertical-align: middle;
+    width: fit-content;
+    height: auto;
+    margin: auto;
+}
+
+.item-1 {
+    background: LightSkyBlue;
+}
+
+.item-2 {
+    background: LightSalmon;
+}
+
+.item-3 {
+    background: PaleTurquoise;
+}
+
+.item-4 {
+    background: LightPink;
+}
+
+.item-5 {
+    background: PaleGreen;
+}
+
+/**************************************/
+
+
+/*----------------------------------------------------*/
+/*///////////////////#MEDIA_QUERIES///////////////////*/
+/*----------------------------------------------------*/
+
+
+@media only screen and (min-width: 650px) {
+    #grid-example-1 {
+        grid-template-columns: 120px 120px 120px;
+        grid-template-rows: 120px 120px 120px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #grid-example-1 {
+        grid-template-columns: 70px 70px 70px;
+        grid-template-rows: 70px 70px 70px;
+        font-size: 3em;
+        line-height: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+
+    #container {
+        grid-template-rows: 10vh 40px 1fr 10vh;
+        grid-template-columns: 10vw 1fr 10vw;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+
+    #navbar {
+        display: none;
+    }
+
+    #header-small {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px solid;
+        border-color: whitesmoke;
+        border-style: double;
+        background-color: cadetblue;
+        color: whitesmoke;
+        position: fixed;
+        width: 100%;
+        height: 10vh;
+        margin: 0;
+    }
+
+    #main-doc {
+        grid-column: 1 / 4;
+        grid-row: 3 / 5;
+        padding: 10px;
+        border-left: none;
+        border-bottom: 5px solid;
+        border-bottom-color: cadetblue;
+        border-top: none;
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+    section {
+        grid-column: 1 / 4;
+        grid-row: 3 / 5;
+        padding-top: 15vh;
+    }
+
+    #hamburger-btn {
+        color: cadetblue;
+        background-color: whitesmoke;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-bottom: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-left: 10px;
+        position: fixed;
+        top: 11vh;
+        width: 100%;
+        height: 2em;
+        border-bottom: 5px solid;
+        border-bottom-color: cadetblue;
+    }
+
+    #blur {
+        grid-row: 1 / 5;
+        grid-column: 1 / 4;
+        z-index: 1;
+        background-color: cadetblue;
+        opacity: 0.5;
+    }
+
+    #navbar {
+        border-right: none;
+        grid-row-gap: 0px;
+        position: fixed;
+        z-index: 3;
+        height: 90vh;
+        width: 80vw;
+        /* centers both horizontally and vertically */
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        /****/
+        background-color: whitesmoke;
+        border: 8px solid;
+        border-style: double;
+        border-color: cadetblue;
+        display: none;
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 1fr;
+    }
+
+    #nav-header {
+        display: none;
+    }
+
+    #cross {
+        display: block;
+    }
+
+    #cross-link {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: cadetblue;
+        border-bottom: 8px solid;
+        border-bottom-color: cadetblue;
+        cursor: pointer;
+    }
+
+    #navbar-links {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        grid-template-columns: 1fr;
+    }
+
+    #menu-select > p,
+    #menu-select {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 10vh;
+        left: 30vw;
+        font-size: 30px;
+        color: cadetblue;
+        background-color: whitesmoke;
+        height: 0px;
+        line-height: 1.6;
+        letter-spacing: 0.6px;
+        word-spacing: 5px;
+    }
+}
